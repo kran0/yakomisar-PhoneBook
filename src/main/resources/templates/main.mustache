@@ -1,5 +1,13 @@
 <!DOCTYPE HTML>
 <html>
+<style>
+    table, th, td {
+        border:1px solid black;
+        border-collapse: collapse;
+        padding-left: 5px;
+
+    }
+</style>
 <head>
     <title>Employee list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,10 +16,10 @@
 <div>
     <h3>Add employees</h3>
     <form method="post">
-        <input type="text" name="name" placeholder="Employee name" />
-        <input type="text" name="phone" placeholder="Phone number" />
+        <input type="text" name="name" required placeholder="Employee name" />
+        <input type="text" name="phone" required placeholder="Phone number" />
         <input type="text" name="workplace" placeholder="Workplace" />
-        <button type="submit">Add</button>
+        <button type="submit"><strong>Add</strong></button>
     </form>
 </div>
 <div>
@@ -20,19 +28,27 @@
         <input type="text" name="name" placeholder="Find name" />
         <input type="text" name="phone" placeholder="Find number" />
         <input type="text" name="workplace" placeholder="Find workplace" />
-        <button type="submit">Find</button>
+        <button type="submit"><strong>Find</strong></button>
     </form>
 </div>
 <div>
     <h3>List of employees</h3>
 </div>
+<table style="width:100%">
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Workplace</th>
+    </tr>
 {{#employees}}
-<div>
-    <b>{{id}}</b>
-    <span>{{name}}</span>
-    <span>{{phone}}</span>
-    <span>{{workplace}}</span>
-</div>
+    <tr>
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>{{phone}}</td>
+        <td>{{workplace}}</td>
+    </tr>
 {{/employees}}
+</table>
 </body>
 </html>
