@@ -42,12 +42,15 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("find")
     public String find(@RequestParam String name, @RequestParam String phone, @RequestParam String workplace, Map<String, Object> model) {
-        Employee employee = new Employee(name, phone, workplace);
+        Iterable<Employee> employees;
 
-        employeeRep.save(employee);
-        Iterable<Employee> employees = employeeRep.findAll();
+        if (name != null && !name.isEmpty()) {
+            employees = employeeRep.findByName(name);
+        } else {
+            employees = employeeRep.findAll();
+        }
         model.put("employees", employees);
 
         return "main";
