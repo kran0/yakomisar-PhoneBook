@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Employee list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div>
+    <form method="post">
+        <input type="text" name="name" placeholder="Employee name" />
+        <input type="text" name="phone" placeholder="Phone number" />
+        <input type="text" name="workplace" placeholder="Workplace" />
+        <button type="submit">Add employee</button>
+    </form>
+</div>
+<div>
+    <h3>Filter employees</h3>
+    <form method="post" action="find">
+        <input type="text" name="name" placeholder="Find name" />
+        <input type="text" name="phone" placeholder="Find number" />
+        <input type="text" name="workplace" placeholder="Find workplace" />
+        <button type="submit">Find</button>
+    </form>
+</div>
+<div>
+    <h3>List of employees</h3>
+</div>
+{{#employees}}
+<div>
+    <b>{{id}}</b>
+    <span>{{name}}</span>
+    <span>{{phone}}</span>
+    <span>{{workplace}}</span>
+</div>
+{{/employees}}
+</body>
+</html>
