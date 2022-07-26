@@ -39,12 +39,16 @@ public class PhoneBookController {
     }
 
     @PostMapping("/main")
-    public String add(@RequestParam String name, @RequestParam String phone, @RequestParam String workplace, Map<String, Object> model) {
-        Employee employee = new Employee(name, phone, workplace);
+    public String add(@RequestParam String firstName, @RequestParam String secondName, @RequestParam String email, @RequestParam String code, @RequestParam String phone, @RequestParam String workplace, Map<String, Object> model) {
+        Employee employee = new Employee(firstName, secondName, email, code+'-'+phone,  workplace);
 
         employeeRep.save(employee);
+
         Iterable<Employee> employees = employeeRep.findAll();
+        Iterable<Codes> codes = codeRep.findAll();
+
         model.put("employees", employees);
+        model.put("codes", codes);
 
         return "main";
     }
@@ -61,7 +65,7 @@ public class PhoneBookController {
         Iterable<Employee> employees;
 
         if (name != null && !name.isEmpty()) {
-            employees = employeeRep.findByNameLike(name);
+            employees = employeeRep.findByFirstNameLike(name);
         } else {
             employees = employeeRep.findAll();
         }

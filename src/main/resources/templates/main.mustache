@@ -48,14 +48,16 @@
 <div>
     <h3>Add employees</h3>
     <form method="post">
-        <input type="text" name="name" required placeholder="Enter name" maxlength="5"/>
+        <input type="text" name="firstName" required placeholder="Enter name" maxlength="10"/>
+        <input type="text" name="secondName" required placeholder="Enter name" maxlength="20"/>
         <select id="codes" name="code">
             {{#codes}}
                 <option value={{code}}>{{code}}</option>
             {{/codes}}
         </select>
-        <input type="tel" name="phone" required placeholder="nnn-ddd-dd-dd" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"/>
-        <input type="text" name="workplace" placeholder="Workplace" />
+        <input type="tel" name="phone" required placeholder="ddd-dd-dd" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"/>
+        <input type="email" name="email" placeholder="email" pattern="[a-z0-9._%+-]{30}+@[a-z0-9.-]{7}+\.[a-z]{3}"/>
+        <input type="text" name="workplace" placeholder="workplace" />
         <button type="submit"><strong>Add</strong></button>
     </form>
 </div>
@@ -65,15 +67,17 @@
 <table style="width:100%">
     <tr>
         <th>id</th>
-        <th>Name</th>
+        <th>Full name</th>
         <th>Phone</th>
+        <th>Email</th>
         <th>Workplace</th>
     </tr>
 {{#employees}}
     <tr>
         <td>{{id}}</td>
-        <td>{{name}}</td>
+        <td>{{firstName}} {{secondName}}</td>
         <td>{{phone}}</td>
+        <td>{{email}}</td>
         <td>{{workplace}}</td>
     </tr>
 {{/employees}}

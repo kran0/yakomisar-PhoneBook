@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 public interface EmployeeRep extends CrudRepository<Employee, Long> {
-    List<Employee> findByNameLike(String name);
+    List<Employee> findByFirstNameLike(String firstName);
 }
