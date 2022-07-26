@@ -43,6 +43,7 @@
 <ul>
     <li><a class="active" href="/main">Home</a></li>
     <li><a href="/search">Search</a></li>
+    <li><a href="/empcard">Edit</a></li>
     <li><a href="/greeting">Integration</a></li>
 </ul>
 <div>
@@ -75,7 +76,7 @@
 {{#employees}}
     <tr>
         <td>{{id}}</td>
-        <td>{{firstName}} {{secondName}}</td>
+        <td><a href="/empcard/{{id}}">{{firstName}} {{secondName}}</a></td>
         <td>{{phone}}</td>
         <td>{{email}}</td>
         <td>{{workplace}}</td>

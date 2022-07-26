@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee card</title>
+</head>
+<style>
+    table, th, td {
+        border:1px solid black;
+        border-collapse: collapse;
+        padding-left: 5px;
+
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #04AA6D;
+    }
+</style>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>PhoneBook</title>
+</head>
+<ul>
+    <li><a href="/main">Home</a></li>
+    <li><a href="/search">Search</a></li>
+    <li><a class="active" href="/empcard">Edit</a></li>
+    <li><a href="/greeting">Integration</a></li>
+</ul>
+<body>
+<div>
+  <h3>Employee card</h3>
+    <form method="post">
+{{#employees}}
+        <input type="text" name="firstName" required value={{firstName}} maxlength="10"/>
+        <input type="text" name="secondName" required value={{secondName}} maxlength="20"/>
+        <input type="tel" name="phone" required value={{phone}} pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"/>
+        <input type="email" name="email" value={{email}} pattern="[a-z0-9._%+-]{30}+@[a-z0-9.-]{7}+\.[a-z]{3}"/>
+        <input type="text" name="workplace" value={{workplace}}" />
+{{/employees}}
+    <button type="submit"><strong>Update</strong></button>
+  </form>
+</div>
+</body>
+</html>

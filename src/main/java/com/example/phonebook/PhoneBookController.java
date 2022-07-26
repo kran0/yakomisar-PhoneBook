@@ -6,11 +6,14 @@ import com.example.phonebook.repositories.CodesRep;
 import com.example.phonebook.repositories.EmployeeRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class PhoneBookController {
@@ -43,7 +46,6 @@ public class PhoneBookController {
         Employee employee = new Employee(firstName, secondName, email, code+'-'+phone,  workplace);
 
         employeeRep.save(employee);
-
         Iterable<Employee> employees = employeeRep.findAll();
         Iterable<Codes> codes = codeRep.findAll();
 
@@ -72,5 +74,14 @@ public class PhoneBookController {
         model.put("employees", employees);
 
         return "search";
+    }
+    @GetMapping("/empcard/{id}")
+    public String getPatientInfo(@PathVariable("id") Integer id, Map<String, Object> model) {
+
+        Employee employees = employeeRep.findById(id).orElse(null);
+
+        model.put("employees", employees);
+
+        return "empcard";
     }
 }
