@@ -1,10 +1,50 @@
 <!DOCTYPE HTML>
 <html>
+<style>
+    table, th, td {
+        border:1px solid black;
+        border-collapse: collapse;
+        padding-left: 5px;
+
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #04AA6D;
+    }
+</style>
 <head>
     <title>List of employees</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<ul>
+    <li><a href="/main">Home</a></li>
+    <li><a href="/search">Search</a></li>
+    <li><a class="active" href="/greeting">Integration</a></li>
+</ul>
 <div>Hello {{name}}</div>
 </body>
 </html>
