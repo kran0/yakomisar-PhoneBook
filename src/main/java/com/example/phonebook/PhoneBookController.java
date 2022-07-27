@@ -85,8 +85,8 @@ public class PhoneBookController {
         return "empcard";
     }
 
-    @PostMapping("/empcard/{id}")
-    public String find(@PathVariable("id") Integer id,
+    @PostMapping(value = "/empcard/{id}", params = "save")
+    public String save(@PathVariable("id") Integer id,
                        @RequestParam String firstName,
                        @RequestParam String secondName,
                        @RequestParam String email,
@@ -94,14 +94,29 @@ public class PhoneBookController {
                        @RequestParam String phone,
                        @RequestParam String workplace,
                        Map<String, Object> model) {
-        Iterable<Employee> employees;
 
-        System.out.println(firstName);
-        System.out.println(secondName);
-        System.out.println(email);
-        System.out.println(phone);
-        System.out.println(workplace);
+        Employee employee = employeeRep.findById(id).orElse(null);
+        if (employee != null) {
+            employee.setFirstName(firstName);
+            employee.setSecondName(secondName);
+            employee.setEmail(email);
+            employee.setPhone(phone);
+            employee.setWorkplace(workplace);
+            employeeRep.save(employee);
+        }
+        return "redirect:/main";
+    }
 
+    @PostMapping(value = "/empcard/{id}", params = "delete")
+    public String delete(@PathVariable("id") Integer id) {
+        Employee employee = employeeRep.findById(id).orElse(null);
+        if (employee != null) {
+            employeeRep.deleteById(id);
+        }
+        return "redirect:/main";
+    }
+    @PostMapping(value = "/empcard/{id}", params = "cancel")
+    public String cancel() {
         return "redirect:/main";
     }
 }
