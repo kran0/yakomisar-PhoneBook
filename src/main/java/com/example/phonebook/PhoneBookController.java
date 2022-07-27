@@ -84,4 +84,24 @@ public class PhoneBookController {
 
         return "empcard";
     }
+
+    @PostMapping("/empcard/{id}")
+    public String find(@PathVariable("id") Integer id,
+                       @RequestParam String firstName,
+                       @RequestParam String secondName,
+                       @RequestParam String email,
+                       //RequestParam String code,
+                       @RequestParam String phone,
+                       @RequestParam String workplace,
+                       Map<String, Object> model) {
+        Iterable<Employee> employees;
+
+        System.out.println(firstName);
+        System.out.println(secondName);
+        System.out.println(email);
+        System.out.println(phone);
+        System.out.println(workplace);
+
+        return "redirect:/main";
+    }
 }

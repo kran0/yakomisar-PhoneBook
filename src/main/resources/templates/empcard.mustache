@@ -54,11 +54,11 @@
   <h3>Employee card</h3>
     <form method="post">
 {{#employees}}
-        <input type="text" name="firstName" required value={{firstName}} maxlength="10"/>
-        <input type="text" name="secondName" required value={{secondName}} maxlength="20"/>
-        <input type="tel" name="phone" required value={{phone}} pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"/>
-        <input type="email" name="email" value={{email}} pattern="[a-z0-9._%+-]{30}+@[a-z0-9.-]{7}+\.[a-z]{3}"/>
-        <input type="text" name="workplace" value={{workplace}}" />
+        <input type="text" name="firstName" required value="{{firstName}}" maxlength="10"/>
+        <input type="text" name="secondName" required value="{{secondName}}" maxlength="20"/>
+        <input type="tel" name="phone" required value="{{phone}}" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"/>
+        <input type="email" name="email" value="{{email}}" pattern="[a-z0-9._%+-]{30}+@[a-z0-9.-]{7}+\.[a-z]{3}"/>
+        <input type="text" name="workplace" value="{{workplace}}" />
 {{/employees}}
     <button type="submit"><strong>Update</strong></button>
   </form>
