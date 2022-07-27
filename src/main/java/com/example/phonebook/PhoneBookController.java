@@ -79,8 +79,10 @@ public class PhoneBookController {
     public String getPatientInfo(@PathVariable("id") Integer id, Map<String, Object> model) {
 
         Employee employees = employeeRep.findById(id).orElse(null);
+        Iterable<Codes> codes = codeRep.findAll();
 
         model.put("employees", employees);
+        model.put("codes", codes);
 
         return "empcard";
     }
@@ -90,7 +92,7 @@ public class PhoneBookController {
                        @RequestParam String firstName,
                        @RequestParam String secondName,
                        @RequestParam String email,
-                       //RequestParam String code,
+                       @RequestParam String code,
                        @RequestParam String phone,
                        @RequestParam String workplace,
                        Map<String, Object> model) {
@@ -100,7 +102,7 @@ public class PhoneBookController {
             employee.setFirstName(firstName);
             employee.setSecondName(secondName);
             employee.setEmail(email);
-            employee.setPhone(phone);
+            employee.setPhone(code + '-' + phone);
             employee.setWorkplace(workplace);
             employeeRep.save(employee);
         }
