@@ -27,6 +27,10 @@ public class PhoneBookController {
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Map<String, Object> model) {
         model.put("name", name);
+
+        Iterable<Employee> employees = employeeRep.findAll();
+        model.put("employees", employees);
+
         return "greeting";
     }
 
@@ -75,6 +79,20 @@ public class PhoneBookController {
 
         return "search";
     }
+
+    @PostMapping("/greeting")
+    public String prepare(@RequestParam String type, Map<String, Object> model) {
+
+        if (type != "") {
+            System.out.println(type);
+        }
+        Iterable<Employee> employees;
+        employees = employeeRep.findAll();
+        model.put("employees", employees);
+
+        return "greeting";
+    }
+
     @GetMapping("/empcard/{id}")
     public String getPatientInfo(@PathVariable("id") Integer id, Map<String, Object> model) {
 

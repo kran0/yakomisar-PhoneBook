@@ -1,12 +1,6 @@
 <!DOCTYPE HTML>
 <html>
 <style>
-    table, th, td {
-        border:1px solid black;
-        border-collapse: collapse;
-        padding-left: 5px;
-
-    }
     ul {
         list-style-type: none;
         margin: 0;
@@ -48,36 +42,42 @@
     <li><a class="active" href="/search">Search</a></li>
     <li><a href="/greeting">Integration</a></li>
 </ul>
+<div class="container">
 <div>
     <h3>Find employees</h3>
     <form method="post" action="search">
         <input type="text" name="name" placeholder="Find name" />
         <input type="text" name="phone" placeholder="Find number" />
         <input type="text" name="workplace" placeholder="Find workplace" />
-        <button type="submit"><strong>Find</strong></button>
+        <button type="submit" class="btn btn-primary btn-block"><strong>Find</strong></button>
     </form>
 </div>
 <div>
     <h3>List of employees</h3>
 </div>
-<table style="width:100%">
-    <tr>
-        <th>id</th>
-        <th>Full name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Workplace</th>
-    </tr>
-{{#employees}}
-    <tr>
-        <td>{{id}}</td>
-        <td>{{firstName}} {{secondName}}</td>
-        <td>{{phone}}</td>
-        <td>{{email}}</td>
-        <td>{{workplace}}</td>
-    </tr>
-{{/employees}}
-</table>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Workplace</th>
+        </tr>
+        </thead>
+        {{#employees}}
+            <tbody>
+            <tr>
+                <th scope="row">{{id}}</th>
+                <td><a href="/empcard/{{id}}">{{firstName}} {{secondName}}</a></td>
+                <td>{{phone}}</td>
+                <td>{{email}}</td>
+                <td>{{workplace}}</td>
+            </tr>
+            </tbody>
+        {{/employees}}
+    </table>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </body>
