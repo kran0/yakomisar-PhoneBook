@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  app:
+    container_name: app
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/phonebook
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=strongpwd
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_DB=phonebook
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=strongpwd
