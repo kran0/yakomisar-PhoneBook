@@ -66,18 +66,37 @@ public class PhoneBookController {
 
         return "search";
     }
-    @PostMapping("/search")
-    public String find(@RequestParam String name, @RequestParam String phone, @RequestParam String workplace, Map<String, Object> model) {
+
+    @GetMapping("/searchtable")
+    public String searchtable(Map<String, Object> model) {
+        Iterable<Employee> employees;
+        employees = employeeRep.findAll();
+        model.put("employees", employees);
+        model.put("results", employees);
+        return "searchtable";
+    }
+    @PostMapping(value = "/search", params = "find")
+    public String find(@RequestParam String first, @RequestParam String second, @RequestParam String work, Map<String, Object> model) {
         Iterable<Employee> employees;
 
-        if (name != null && !name.isEmpty()) {
-            employees = employeeRep.findByFirstNameLike(name);
-        } else {
+        if (first.equals("blank") && second.equals("blank") && work.equals("blank")) {
             employees = employeeRep.findAll();
+            model.put("employees", employees);
+            model.put("results", employees);
+        } else {
+            employees = employeeRep.findByFirstNameOrSecondNameOrWorkplace(first, second, work);
+            model.put("employees", employeeRep.findAll());
+            model.put("results", employees);
         }
-        model.put("employees", employees);
 
-        return "search";
+        return "searchtable";
+    }
+
+    @GetMapping("/statistics")
+    public String stats(Map<String, Object> model) {
+        Long total_records = employeeRep.count();
+        model.put("total_records", total_records);
+        return "statistics";
     }
 
     @PostMapping("/greeting")

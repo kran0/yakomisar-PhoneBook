@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface EmployeeRep extends CrudRepository<Employee, Integer> {
     List<Employee> findByFirstNameLike(String firstName);
+    List<Employee> findByFirstNameOrSecondNameOrWorkplace(String firstName, String secondName, String workplace);
+
 }
