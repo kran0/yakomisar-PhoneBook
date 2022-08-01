@@ -44,4 +44,19 @@ __3__ | /SEARCH  | Веб-форма поиска контактов в теле
 __4__ | /STATISTICS  | Веб-форма краткой статистики по БД.
 __5__ | /INTEGRATION  | Веб-форма "интеграции" телефонной книги с другими сервисами посредством выгрузки файлов в формате json. При выгрузке у пользователя есть возможность выбрать тип выгрузки (1) выгрузка всех данных по контактам из телефонной книги (2) выгрузка данных по местам работы сотрудников.
 
+TODO: document PhoneBookController.java mappings:
+```@GetMapping("/greeting")
+@GetMapping("/main")
+@PostMapping("/main")
+@GetMapping("/search")
+@GetMapping("/searchtable")
+@PostMapping(value = "/search", params = "find")
+@GetMapping("/statistics")
+@PostMapping("/greeting")
+@GetMapping("/empcard/{id}")
+@PostMapping(value = "/empcard/{id}", params = "save")
+@PostMapping(value = "/empcard/{id}", params = "delete")
+@PostMapping(value = "/empcard/{id}", params = "cancel")
+```
+
 Если вам понравился проект ставьте звездочку или делайте __fork__, буду рад рассмотреть изменения.
