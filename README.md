@@ -46,17 +46,17 @@ __5__ | /INTEGRATION  | Веб-форма "интеграции" телефон�
 
 TODO: document PhoneBookController.java mappings:
 ```@GetMapping("/greeting")
-@GetMapping("/main")
-@PostMapping("/main")
-@GetMapping("/search")
-@GetMapping("/searchtable")
-@PostMapping(value = "/search", params = "find")
-@GetMapping("/statistics")
-@PostMapping("/greeting")
-@GetMapping("/empcard/{id}")
-@PostMapping(value = "/empcard/{id}", params = "save")
-@PostMapping(value = "/empcard/{id}", params = "delete")
-@PostMapping(value = "/empcard/{id}", params = "cancel")
+@GetMapping("/main") # просмотр
+@PostMapping("/main") # добавление
+@GetMapping("/search") # просмотр
+@GetMapping("/searchtable") # поиск - таблица и форма
+@PostMapping(value = "/search", params = "find") # поиск - форма
+@GetMapping("/statistics") # количество записей в БД
+@PostMapping("/greeting") # # просмотр и выгрузка
+@GetMapping("/empcard/{id}") # Редактирование, удаление и просмотр
+@PostMapping(value = "/empcard/{id}", params = "save") # редактирование
+@PostMapping(value = "/empcard/{id}", params = "delete") # Удаление
+@PostMapping(value = "/empcard/{id}", params = "cancel") #Просомтр
 ```
 
 Если вам понравился проект ставьте звездочку или делайте __fork__, буду рад рассмотреть изменения.
